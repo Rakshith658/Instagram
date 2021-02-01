@@ -10,6 +10,14 @@ import { firebase } from '@firebase/app';
 import Landing from './components/auth/Landing'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import MainScreen from './components/main'
+
+
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import rootReducer from './redux/reducers/index'
+import thunk from 'redux-thunk'
+const store = createStore(rootReducer,applyMiddleware(thunk))
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -77,9 +85,9 @@ export default class App extends Component {
       )
     }
     return (
-      <View style={{ flex: 1, justifyContent: 'center' , alignItems:'center' }}>
-        <Text>Rakshith Kumar s</Text>
-      </View>
+      <Provider store={store}>
+        <MainScreen/>
+      </Provider>
     )
   }
 }
