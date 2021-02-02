@@ -11,6 +11,7 @@ import Landing from './components/auth/Landing'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import MainScreen from './components/main'
+import Add from './components/main/Add'
 
 
 import { Provider } from 'react-redux'
@@ -35,6 +36,7 @@ firebase.initializeApp(firebaseConfig)
 
 
 const Stack = createStackNavigator();
+
 
 
 
@@ -86,7 +88,12 @@ export default class App extends Component {
     }
     return (
       <Provider store={store}>
-        <MainScreen/>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Main">
+            <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="Add" component={Add} />
+          </Stack.Navigator> 
+        </NavigationContainer>  
       </Provider>
     )
   }
