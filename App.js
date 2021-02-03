@@ -12,6 +12,7 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import MainScreen from './components/main'
 import Add from './components/main/Add'
+import Save from './components/main/Save'
 
 
 import { Provider } from 'react-redux'
@@ -91,7 +92,8 @@ export default class App extends Component {
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Main">
             <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false }}/>
-            <Stack.Screen name="Add" component={Add} />
+            <Stack.Screen name="Add" component={Add} navigation={this.props.navigation} />
+            <Stack.Screen name="SaveScreen" component={Save} navigation={this.props.navigation}/>
           </Stack.Navigator> 
         </NavigationContainer>  
       </Provider>

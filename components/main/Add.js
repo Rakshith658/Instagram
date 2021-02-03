@@ -4,7 +4,7 @@ import { Camera } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons,MaterialIcons,Fontisto } from 'react-native-vector-icons' 
 
-export default function App() {
+export default function App({ navigation }) {
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
@@ -51,7 +51,7 @@ export default function App() {
   }
   return (
     <View style={{ flex: 1,flexDirection:'column-reverse' }}>
-      <Camera style={styles.camera} type={type}>
+      {/* <Camera style={styles.camera} type={type}>
         <View style={styles.buttonContainer}>
           <Ionicons name="ios-camera-reverse-outline" color={"white"} size={38} onPress={() => {
             setType(
@@ -64,8 +64,8 @@ export default function App() {
           <Fontisto name="photograph" color={"white"} size={38} onPress={() => pickImage()}/>
         </View>
       </Camera>
-      {image && <Image source={{ uri: image }} style={{ flex: 1 }} />} 
-      {/* <View style={styles.cameraContainer}>
+      {image && <Image source={{ uri: image }} style={{ flex: 1 }} />}*/}
+      <View style={styles.cameraContainer}>
         <Camera
           ref={ref => setCamera(ref)}
           style={styles.fixedRatio}
@@ -85,40 +85,40 @@ export default function App() {
       </Button>
       <Button title="Take Picture" onPress={() => takePicture()} />
       <Button title="Pick Image From Gallery" onPress={() => pickImage()} />
-      {/* <Button title="Save" onPress={() => navigation.navigate('Save', { image })} /> */}
-      {/* {image && <Image source={{ uri: image }} style={{ flex: 1 }} />} */} 
+      <Button title="Save" onPress={() => navigation.navigate("SaveScreen", { image })} />
+      {image && <Image source={{ uri: image }} style={{ flex: 1 }} />} 
     </View>
   );
 }
 
 
-// const styles = StyleSheet.create({
-//   cameraContainer: {
-//     flex: 1,
-//     flexDirection: 'row'
-//   },
-//   fixedRatio: {
-//     flex: 1,
-//     aspectRatio: 1
-//   }
-
-// })
-
 const styles = StyleSheet.create({
-  container: {
+  cameraContainer: {
     flex: 1,
-    flexDirection:'column-reverse'
+    flexDirection: 'row'
   },
-  camera: {
+  fixedRatio: {
     flex: 1,
-  },
-  buttonContainer: {
-    flex: 1,
-    backgroundColor: 'transparent',
-    flexDirection: 'row',
-    margin: 20,
-    justifyContent:'space-between',
-    marginTop:"99%"
-  },
+    aspectRatio: 1
+  }
+
+})
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     flexDirection:'column-reverse'
+//   },
+//   camera: {
+//     flex: 1,
+//   },
+//   buttonContainer: {
+//     flex: 1,
+//     backgroundColor: 'transparent',
+//     flexDirection: 'row',
+//     margin: 20,
+//     justifyContent:'space-between',
+//     marginTop:"99%"
+//   },
   
-});
+// });
