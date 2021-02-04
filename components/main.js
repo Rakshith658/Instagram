@@ -6,7 +6,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { bindActionCreators } from 'redux'
 import { 
     fetchUser, 
-    // fetchUserPosts, 
+    fetchUserPosts, 
     // fetchUserFollowing, 
     // clearData 
 } from '../redux/actions/index'
@@ -26,7 +26,7 @@ export class main extends Component {
     componentDidMount() {
         // this.props.clearData();
         this.props.fetchUser();
-        // this.props.fetchUserPosts();
+        this.props.fetchUserPosts();
         // this.props.fetchUserFollowing();
     }
     render() {
@@ -77,7 +77,7 @@ const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser
 })
 
-const mapDispatchProps = (dispatch) => bindActionCreators({ fetchUser }, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({ fetchUser,fetchUserPosts }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchProps)(main);
 // export default connect(null, mapDispatchProps)(main);

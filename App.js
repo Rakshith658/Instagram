@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react'
-import { View, Text,StyleSheet } from 'react-native'
+import { View, Text,StyleSheet,ActivityIndicator } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -70,7 +70,8 @@ export default class App extends Component {
     if (!loaded) {
       return (
         <View style={{ flex: 1, justifyContent: 'center',alignItems:'center' }}>
-          <Text>Loading</Text>
+          <ActivityIndicator/>
+          <Text>Loading....</Text>
         </View>
       )
     }
