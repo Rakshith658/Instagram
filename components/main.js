@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { connect } from 'react-redux'
+import firebase from 'firebase'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { bindActionCreators } from 'redux'
 import { 
@@ -57,11 +58,11 @@ export class main extends Component {
                         ),
                     }} />
                 <Tab.Screen name="Profile" component={ProfileScreen} 
-                // listeners={({ navigation }) => ({
-                //     tabPress: event => {
-                //         event.preventDefault();
-                //         navigation.navigate("Profile", {uid: firebase.auth().currentUser.uid})
-                //     }})}
+                listeners={({ navigation }) => ({
+                    tabPress: event => {
+                        event.preventDefault();
+                        navigation.navigate("Profile", {uid: firebase.auth().currentUser.uid})
+                    }})}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <MaterialCommunityIcons name="account-circle" color={color} size={26} />
