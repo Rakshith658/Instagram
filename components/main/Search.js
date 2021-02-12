@@ -11,18 +11,18 @@ const Search = ( props ) => {
 
   const fetchUsers = (search) => {
     firebase.firestore()
-    .collection('users')
-    .where('name','>=',search)
-    .get()
-    .then((snapshort)=>{
-      let users = snapshot.docs.map(doc => {
+      .collection('users')
+      .where('name', '>=', search)
+      .get()
+      .then((snapshot) => {
+        let users = snapshot.docs.map(doc => {
           const data = doc.data();
           const id = doc.id;
           return { id, ...data }
+        });
+        setusers(users);
       })
-      setusers(users)
-    })
-  }
+    }
 
   return (
     <View style={styles.container}>

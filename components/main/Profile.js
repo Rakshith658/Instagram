@@ -120,9 +120,9 @@ const Profile = ( props ) => {
 }
 
 const mapStateToProps = (store) => ({
-    currentUser: store.userState.currentUser,
-    posts: store.userState.posts,
-    following: store.userState.following
+  currentUser: store.userState.currentUser,
+  posts: store.userState.posts,
+  following: store.userState.following
 })
 
 
