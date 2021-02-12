@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux'
 import { 
     fetchUser, 
     fetchUserPosts, 
-    // fetchUserFollowing, 
+    fetchUserFollowing, 
     // clearData 
 } from '../redux/actions/index'
 
@@ -28,7 +28,7 @@ export class main extends Component {
         // this.props.clearData();
         this.props.fetchUser();
         this.props.fetchUserPosts();
-        // this.props.fetchUserFollowing();
+        this.props.fetchUserFollowing();
     }
     render() {
         return (
@@ -78,7 +78,7 @@ const mapStateToProps = (store) => ({
     currentUser: store.userState.currentUser
 })
 
-const mapDispatchProps = (dispatch) => bindActionCreators({ fetchUser,fetchUserPosts }, dispatch);
+const mapDispatchProps = (dispatch) => bindActionCreators({ fetchUser,fetchUserPosts,fetchUserFollowing }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchProps)(main);
 // export default connect(null, mapDispatchProps)(main);
